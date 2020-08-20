@@ -28,7 +28,7 @@ export class AppComponent {
   addKeyEvents() {
     document.addEventListener('keydown', (event: KeyboardEvent) => {
       if (event.code === "Space" || event.code === "KeyP") {
-        console.log('space');
+        //console.log('space');
         this.generateJ();
       } else if (event.code === "ArrowLeft" || event.code === "KeyA") {
         document.getElementById('backward').click();
@@ -37,7 +37,9 @@ export class AppComponent {
       } else if (event.code === "KeyL") {
         document.getElementById('loop').click();
       } else if (event.code === "KeyS") {
+        console.log(this.gameArray);
         this.moveCurrentDown();
+
       }
     });
   }
@@ -53,8 +55,8 @@ export class AppComponent {
     }
     let left = (width - this._windowWidth) / 2;
     let bottom = (height - this._windowHeight) / 2;
-    console.log('hght:' + this._windowHeight);
-    console.log('wdth:' + this._windowWidth);
+    //console.log('hght:' + this._windowHeight);
+    //console.log('wdth:' + this._windowWidth);
     this._playground.style.width = this._windowWidth.toString() + "px";
     this._playground.style.height = this._windowHeight.toString() + "px";
     this._playground.style.left = left.toString() + "px";
@@ -95,14 +97,16 @@ export class AppComponent {
         this.changeCurrentY(i, 1);
       }
       this.drawCurrent();
-      console.log(this.gameArray);
+      //console.log(this.gameArray);
     } else {
+      //console.log('collision');
       this.generateNext();
     }
   }
 
   generateNext() {
     let random = Math.floor((Math.random() * 7));
+    console.log('generating');
     switch (random) {
       case 0:
         this.generateI();
@@ -126,7 +130,13 @@ export class AppComponent {
         this.generateV();
         break;
     }
-
+    if (this.checkCanGenerate) {
+      console.log('can')
+      this.drawCurrent();
+    }
+    else {
+      console.log('GAME OVER')
+    }
   }
 
   checkCanMoveDown(): boolean {
@@ -134,37 +144,35 @@ export class AppComponent {
     for (let i = 0; i < 4; i++) {
       let x = this.getCurrentData(i, 'x');
       let y = this.getCurrentData(i, 'y');
-      if (y + 1 >= 20) {
-        console.log(y);
-        returned = false
-      } else if (this.gameArray[y + 1][x] !== 0) {
-        let collidesSelf = false;
-        for (let i = 0; i < 4; i++) {
-          if (this.getCurrentData(i, 'y') === y + 1) {
-            collidesSelf = true;
-          }
-        }
-        if (!collidesSelf) {
-          returned = false;
+      let collidesSelf = false;
+      for (let j = 0; j < 4; j++) {
+        if (this.getCurrentData(j, 'y') === y + 1) { //check if below the cube is another current tetro's cube
+          collidesSelf = true;
         }
       }
-      else {
-        console.log(true);
+      if (y + 1 >= 20) { //collision with bottom end
+        //console.log('bottom');
+        returned = false
+      } else if (!collidesSelf && this.gameArray[y + 1][x] !== 0) { //check if not 0 below that is not part of current tetro
+        //console.log(collidesSelf, x, y)
+        returned = false
       }
     }
+    //console.log(returned);
     return returned;
   }
 
-  checkCanGenerate(index: number): boolean {
-    let x = this.getCurrentData(index, 'x');
-    let y = this.getCurrentData(index, 'y');
-    if (this.gameArray[y][x] === 0) {
-      return true;
-    }
+  checkCanGenerate(): boolean {
+    let returned = true;
+    for (let i = 0; i < 4; i++) {
+      let x = this.getCurrentData(i, 'x');
+      let y = this.getCurrentData(i, 'y');
+      if (this.gameArray[y][x] !== 0) {
+        returned = false;
+        console.log(false);
+      }
 
-    else {
-      console.log('game over')
-      return false;
+      return returned;
     }
   }
 
@@ -177,7 +185,7 @@ export class AppComponent {
     } else if (data === 'x') {
       return x;
     } else if (data === 'c') {
-      console.log(c);
+      //console.log(c);
       return c;
     }
   }
@@ -194,8 +202,7 @@ export class AppComponent {
     this.generateCube(0, 4, 1, 1);
     this.generateCube(0, 5, 1, 2);
     this.generateCube(0, 6, 1, 3);
-
-    console.log(this.gameArray);
+    //console.log('I');
   }
 
   generateO() {
@@ -203,42 +210,41 @@ export class AppComponent {
     this.generateCube(0, 5, 2, 1);
     this.generateCube(1, 4, 2, 2);
     this.generateCube(1, 5, 2, 3);
-    console.log(this.gameArray);
+    //console.log('O')
   }
   generateZ() {
     this.generateCube(0, 3, 3, 0);
     this.generateCube(0, 4, 3, 1);
     this.generateCube(1, 4, 3, 2);
     this.generateCube(1, 5, 3, 3);
-    console.log(this.gameArray);
+    //console.log('Z');
   }
   generateS() {
     this.generateCube(0, 4, 4, 0);
     this.generateCube(0, 5, 4, 1);
     this.generateCube(1, 3, 4, 2);
     this.generateCube(1, 4, 4, 3);
-    console.log(this.gameArray);
+    //console.log('S');
   }
   generateJ() {
     this.generateCube(0, 3, 5, 0);
     this.generateCube(0, 4, 5, 1);
     this.generateCube(0, 5, 5, 2);
     this.generateCube(1, 5, 5, 3);
-    this.drawCurrent();
-    console.log(this.gameArray);
+    //console.log('J');
   }
   generateL() {
     this.generateCube(0, 3, 6, 0);
     this.generateCube(0, 4, 6, 1);
     this.generateCube(0, 5, 6, 2);
     this.generateCube(1, 3, 6, 3);
-    console.log(this.gameArray);
+    //console.log('L');
   }
   generateV() {
     this.generateCube(0, 3, 7, 0);
     this.generateCube(0, 4, 7, 1);
     this.generateCube(0, 5, 7, 2);
     this.generateCube(1, 4, 7, 3);
-    console.log(this.gameArray);
+    //console.log('V');
   }
 }

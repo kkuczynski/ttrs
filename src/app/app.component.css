@@ -1,0 +1,6 @@
+.playground{
+    background-color: rgb(10,10,10);
+    position: absolute;
+    border-radius: 10px;
+    border: solid 3px rgb(31, 35, 70);
+}

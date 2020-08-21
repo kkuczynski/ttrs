@@ -132,3 +132,16 @@ label{
     bottom: 30%;
     left: 43.4%;
 }
+.label1{
+    font-size: 3vh;
+    position: absolute;
+    bottom: 15%;
+    text-align: end;
+    right: 52%;
+}
+.label2{
+    font-size: 3vh;
+    position: absolute;
+    bottom: 15%;
+    left: 52%;
+}

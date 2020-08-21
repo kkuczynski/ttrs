@@ -9,3 +9,126 @@ canvas{
     background-color: black;
     transition-duration: 0.2s;
 }
+
+a{
+    color: rgb(40, 14, 90)
+}
+.sides{
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    outline: none;
+    background: none;
+    border: solid 0px;
+    color: white;
+    font-size: 5vh;
+    text-shadow: 0px,0px,1vh, black;
+    opacity: 0.2;
+}
+.middle{   
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+button.sides.left{
+    left: 0;
+    top: 0;
+}
+button.sides.right{
+    right: 0;
+    top: 0;
+}
+button:active{
+    opacity: 0.4;
+}
+.menu{
+    position: absolute;
+    opacity: 0.5;
+    background: black;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+}
+.play{
+    opacity: 1;
+    background: none;
+    position: absolute;
+    color: white;
+    outline: none;
+    background: none;
+    border: solid 0px;
+    width: 40%;
+    left: 30%;
+    top: 30%;
+    height: 40%;
+    font-size: 20vh;
+}
+i{
+    margin: 0;
+}
+label{
+    color: white;
+    width: 25%;
+    position: absolute;
+    margin: 0;
+    font-size: 1.9vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.moveLeft{
+    left: 10%;
+    top: 48%;
+}
+.moveRight{  
+    right: 5%;   
+    top: 48%;
+ 
+}
+.moveUp{
+    left: 44%;
+    top: 6.5%;
+}
+.moveDown{
+    bottom: 7%;
+    left: 46%;
+}
+.swipe{
+    position: absolute;
+    color: white;
+    width: 30%;
+    height: 10%;
+    font-size: 7vh;
+}
+.swipe.up{
+    text-align: center;
+    justify-content: start;    
+    left: 35%;
+}
+.swipe.down{
+    text-align: center;
+    left: 35%;
+    bottom: -2%;
+}
+.swipe.left{
+    text-align: left;
+    top: 45%;
+}
+.swipe.right{
+    text-align: right;
+    top: 45%;
+    right: 0;
+}
+.swipe.tap{
+    bottom: 20.1%;
+    left: 43.2%;
+}
+.swipe.tap2{
+    font-size: 4vh;
+    bottom: 18.5%;
+    left: 46%;
+}
+.rotate{
+    bottom: 30%;
+    left: 43.4%;
+}

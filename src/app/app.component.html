@@ -1,5 +1,32 @@
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class=playground id=playground>
   <canvas id=canvas></canvas>
-</div>
+  <div id=menu class=menu *ngIf="!playing">
+    <button class=play id=play (click)=startPause()><i class="fa fa-play-circle" aria-hidden="true"></i></button>
+    <div class=inMenu *ngIf=mobile>
+      <label class=moveDown>skip</label>
+      <label class=moveUp>pause</label>
+      <label class=moveRight>move right</label>
+      <label class=moveLeft>move left</label>
+      <label class=rotate>rotate</label>
+      <div class='swipe up'><i class="fa fa-angle-double-up" aria-hidden="true"></i>
+        
 
+        </div>
+      <div class='swipe down'> <i class="fa fa-angle-double-down" aria-hidden="true"></i></div>
+      <div class='swipe left'> <i class="fa fa-angle-double-left" aria-hidden="true"></i></div>
+      <div class='swipe right'><i class="fa fa-angle-double-right" aria-hidden="true"></i></div>
+      <div class ='swipe tap'><i class="fa fa-circle-thin" aria-hidden="true"></i></div>
+      <div class ='swipe tap2'><i class="fa fa-circle-o" aria-hidden="true"></i></div>
+    </div>
+    <div class=inMenu *ngIf=!mobile>
+
+    </div>
+  </div>
+  <div id=mobileSettings *ngIf='mobile && playing'>
+    <!-- <button (click)=moveCurrentHorizontally(-1) class='sides left' id= left><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+  <button (click)=moveCurrentHorizontally(1) class='sides right'id= right><i class="fa fa-arrow-right" aria-hidden="true"></i></button> -->
+    <button (click)=rotateCurrent() class='sides middle' id=middle></button>
+  </div>
+
+</div>

@@ -1,6 +1,11 @@
 .playground{
-    background-color: rgb(10,10,10);
+    background-color: none;
     position: absolute;
     border-radius: 10px;
     border: solid 3px rgb(31, 35, 70);
+}
+
+canvas{
+    background-color: black;
+    transition-duration: 0.2s;
 }

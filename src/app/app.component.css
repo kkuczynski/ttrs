@@ -2,7 +2,7 @@
     background-color: none;
     position: absolute;
     border-radius: 10px;
-    border: solid 3px rgb(31, 35, 70);
+    border: solid 3px rgb(40, 14, 90)
 }
 
 canvas{
@@ -10,9 +10,6 @@ canvas{
     transition-duration: 0.2s;
 }
 
-a{
-    color: rgb(40, 14, 90)
-}
 .sides{
     position: absolute;
     height: 100%;
@@ -144,4 +141,11 @@ label{
     position: absolute;
     bottom: 15%;
     left: 52%;
+}
+.score {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    position: absolute;
+    text-align: end;
 }

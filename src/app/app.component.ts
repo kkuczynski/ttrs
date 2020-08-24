@@ -24,6 +24,7 @@ export class AppComponent {
   private _gameOver = true;
   public mobile = false;
   private _skipping = false;
+  public score = 0;
 
 
   constructor(private deviceService: DeviceDetectorService) {
@@ -108,17 +109,14 @@ export class AppComponent {
       } else if (event.code === "ArrowUp" || event.code === "KeyW") {
         this.rotateCurrent();
       } else if (event.code === "KeyV") {
-        this.skipDown();
-      } else if (event.code === "KeyL") {
-        this.drawCanvas()
-      } else if (event.code === "KeyS") {
+        this.skipDown();      
+      } else if (event.code === "ArrowDown" ||event.code === "KeyS") {
         // console.log(this.gameArray);
-        this.moveCurrentDown();
-        this.drawCanvas();
+        this.moveCurrentDown();       
       }
     });
   }
-  
+
   startPause() {
     if (!this.playing && this._gameOver) { //start new game
       this.initArray();
@@ -132,7 +130,7 @@ export class AppComponent {
     }
   }
   createWindow() {
-    let height = window.innerHeight - 50;
+    let height = window.innerHeight - 60;
     let width = window.innerWidth - 10;
     if (height / this._heightToWidthRatio > width) {
       this._windowWidth = Math.floor(width / 10) * 10;
@@ -149,6 +147,8 @@ export class AppComponent {
     this._playground.style.height = this._windowHeight.toString() + "px";
     this._playground.style.left = left.toString() + "px";
     this._playground.style.bottom = bottom.toString() + "px";
+    document.getElementById('score').style.left = left.toString() + "px";
+    document.getElementById('score').style.width = this._windowWidth.toString() + "px";
     this._canvas.setAttribute('width', this._windowWidth.toString());
     this._canvas.setAttribute('height', this._windowHeight.toString());
     this._cubeSize = Math.round(this._windowWidth / 10);
@@ -193,6 +193,7 @@ export class AppComponent {
         } this.fallRows(i);
       }
     }
+    this.score+=destroyedRowsCount*destroyedRowsCount*100
   }
 
   fallRows(y: number) {
@@ -300,6 +301,11 @@ export class AppComponent {
       // console.log(x, y);
       if (this.gameArray[y][x] > 0) {
         returned = false;
+      }
+      for(let j = 0; j<4;j++) {
+        if(Math.abs(x -  this.getTmpData(j, 'x')) > 5) { //if the tetro breaks to other side of playground
+          returned = false;
+        }
       }
     }
     return returned;

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class= score id=score>score: {{ score }}</div>
 <div class=playground id=playground>
   <canvas id=canvas></canvas>
   <div id=menu class=menu *ngIf="!playing">
@@ -10,27 +11,27 @@
       <label class=moveLeft>move left</label>
       <label class=rotate>rotate</label>
       <div class='swipe up'><i class="fa fa-angle-double-up" aria-hidden="true"></i>
-        
 
-        </div>
+
+      </div>
       <div class='swipe down'> <i class="fa fa-angle-double-down" aria-hidden="true"></i></div>
       <div class='swipe left'> <i class="fa fa-angle-double-left" aria-hidden="true"></i></div>
       <div class='swipe right'><i class="fa fa-angle-double-right" aria-hidden="true"></i></div>
-      <div class ='swipe tap'><i class="fa fa-circle-thin" aria-hidden="true"></i></div>
-      <div class ='swipe tap2'><i class="fa fa-circle-o" aria-hidden="true"></i></div>
+      <div class='swipe tap'><i class="fa fa-circle-thin" aria-hidden="true"></i></div>
+      <div class='swipe tap2'><i class="fa fa-circle-o" aria-hidden="true"></i></div>
     </div>
     <div class=inMenu *ngIf=!mobile>
-      <label class=label1>pause: 
-        <br> left: 
-        <br> right: 
-        <br> skip: 
-        <br> rotate: 
+      <label class=label1>pause:
+        <br> left:
+        <br> right:
+        <br> skip:
+        <br> rotate:
       </label>
-      <label class=label2>  space  
-        <br>   A , <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-        <br>   D , <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        <br>   V 
-        <br>   W , <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
+      <label class=label2> space
+        <br> A , <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        <br> D , <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        <br> V
+        <br> W , <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
       </label>
     </div>
   </div>

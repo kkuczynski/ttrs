@@ -65,7 +65,7 @@ button:active{
 i{
     margin: 0;
 }
-label{
+label{  
     color: white;
     width: 25%;
     position: absolute;
@@ -74,7 +74,7 @@ label{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .moveLeft{
-    left: 10%;
+    left: 8%;
     top: 48%;
 }
 .moveRight{  
@@ -117,17 +117,19 @@ label{
     right: 0;
 }
 .swipe.tap{
-    bottom: 20.1%;
-    left: 43.2%;
+bottom: 20%;
+left: 43.5%;
 }
 .swipe.tap2{
     font-size: 4vh;
-    bottom: 18.5%;
-    left: 46%;
+    position: absolute;
+    bottom: 7vh;
+    left: 1.3vh;
+
 }
 .rotate{
     bottom: 30%;
-    left: 43.4%;
+    left: 43.8%;
 }
 .label1{
     font-size: 3vh;
@@ -141,6 +143,20 @@ label{
     position: absolute;
     bottom: 15%;
     left: 52%;
+}
+.label4{
+    font-size: 4vh;
+    position: absolute;
+    bottom: 10%;
+    text-align: end;
+    right: 52%;
+}
+.label3{
+    text-align: center;
+    font-size: 4vh;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
 }
 .score {
     color: white;

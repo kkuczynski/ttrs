@@ -122,6 +122,7 @@ export class AppComponent {
       this.initArray();
       this.playing = true;
       this._gameOver = false;
+      this.score = 0;
       this.generateNext();
     } else if (this.playing) { //pause game
       this.playing = false;
@@ -332,6 +333,7 @@ export class AppComponent {
       }
       else {
         this._gameOver = true;
+        this.playing = false;
       }
     }
   }
